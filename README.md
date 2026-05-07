@@ -65,4 +65,4 @@ The app manages 4 primary states (Canvases):
 
 * **Course**: Technologies for Extended Reality
 * **Project Goal**: Demonstrate proficiency in AR tracking, mobile optimization, and interactive UX design using the latest industry standards.
-* **Developer**: [Your Name/iamShallo]
+* **Developer**: Francesco Caldarelli
