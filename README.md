@@ -1,68 +1,63 @@
-# AR Dining Assistant - Technologies for Extended Reality Exam 🍽️📱
+# AR Dining Assistant
 
-This project was developed for the **Technologies for Extended Reality** course exam. It explores the integration of Augmented Reality (AR) within the Food & Beverage industry to enhance user safety and environmental sustainability.
+AR Dining Assistant is a Unity-based augmented reality restaurant experience built for an extended reality exam project. It combines a guided onboarding flow, allergy-aware menu filtering, and AR food visualization to simulate a safer and more interactive dining workflow.
 
----
+## Overview
 
-## 🌟 Project Vision & Motivation
+The application is designed around a simple idea: let users register, declare dietary restrictions, and browse a menu that adapts to their profile. Supported dishes can be previewed in AR using Vuforia image targets, while unsafe items are disabled in the interface.
 
-The **AR Dining Assistant** is designed to solve two major issues in modern catering:
-1. **Environmental Impact**: Reducing the carbon footprint by eliminating physical paper menu reprints.
-2. **Health & Safety**: Providing an interactive, foolproof system to prevent accidental allergen consumption through real-time digital filtering.
+## Key Features
 
----
+- Registration and login flow with input validation
+- Dietary questionnaire for gluten, lactose, and vegan preferences
+- Dynamic filtering of menu items based on allergy choices
+- AR food visualization anchored to tracked markers
+- Rotating 3D dish preview for a more polished presentation
+- Cart-style order summary and simulated checkout flow
 
-## 🛠️ Technical Stack
+## Tech Stack
 
-* **Engine**: Unity 6 (Newest Generation LTS)
-* **AR Framework**: Vuforia Engine 10.22+
-* **Scripting**: C# (.NET)
-* **UI System**: Unity UI (UGUI) with dynamic state management
-* **Graphics**: Optimized for Unity 6's Universal Render Pipeline (URP)
+- Unity 6.3.8f1
+- C# scripts
+- Vuforia Engine 11.4.4
+- Unity UI (UGUI)
+- Universal Render Pipeline (URP)
 
----
+## Project Structure
 
-## ⚙️ Core Technical Implementation
+- [Assets/ScenaMenù.unity](Assets/ScenaMenù.unity) - main scene
+- [Assets/Script/Menu.cs](Assets/Script/Menu.cs) - UI flow, allergy filtering, menu and cart logic
+- [Assets/Script/RotazionePiatto.cs](Assets/Script/RotazionePiatto.cs) - continuous 3D object rotation
+- [Assets/Resources/VuforiaConfiguration.asset](Assets/Resources/VuforiaConfiguration.asset) - Vuforia configuration
+- [Packages/manifest.json](Packages/manifest.json) - Unity package dependencies
 
-### 1. Mandatory Allergy Logic (Safety Layer)
-The application implements a strict onboarding flow. Upon registration, users must fill out a dietary profile.
-* **C# Scripting**: The system parses the user's profile and interacts with the Menu Manager.
-* **Dynamic Filtering**: Prohibited items are filtered out. Buttons for unsafe dishes are set to `interactable = false` and visual shaders are applied to "grey out" the UI element.
+## Requirements
 
-### 2. AR Tracking & Visualization
-Using **Vuforia Image Targets**, the app recognizes physical markers placed on restaurant tables.
-* **Spatial Anchoring**: 3D food models are instantiated relative to the marker's pose.
-* **Performance**: Leveraging **Unity 6 optimization**, assets are decimated to ensure high frame rates and low battery consumption on mobile devices.
+- Unity 6.3.8f1 or compatible
+- Android Build Support if you want to build for mobile
+- Vuforia Engine package available to Unity
 
-### 3. Navigation & State Machine
-The app manages 4 primary states (Canvases):
-* **Access/Auth**: Input validation for user credentials.
-* **Profiling**: Allergy and dietary preference collection.
-* **Interactive Menu**: The core filtered menu interface.
-* **Cart/Checkout**: Order summary and total calculation logic.
+## Setup
 
----
+1. Clone the repository.
+2. Open the project in Unity.
+3. Let Unity resolve the package dependencies from [Packages/manifest.json](Packages/manifest.json).
+4. If the Vuforia package is missing locally, import the correct package version used by the project.
+5. Open [Assets/ScenaMenù.unity](Assets/ScenaMenù.unity) and ensure the required scene references are assigned in the Inspector.
 
-## 🔄 Workflow Logic
+## Build
 
-1.  **User Profiling**: User selects "Lactose Intolerant" or "Gluten Free".
-2.  **Safety Filter**: The logic engine loops through the database, disabling any non-compliant dishes.
-3.  **AR Interaction**: Scanning the menu triggers 3D previews of *only* the safe dishes.
-4.  **Transaction**: User adds items to the cart and completes the simulated order.
+1. Open **File > Build Settings** in Unity.
+2. Select **Android** as the target platform.
+3. Add the main scene to the build list.
+4. Configure your player settings and build the APK.
 
----
+## Notes
 
-## 🚀 Deployment Instructions
+- The project includes a generated Vuforia license helper in [Assets/VuforiaLicense.cs](Assets/VuforiaLicense.cs).
+- The repository contains a large prebuilt APK named [ArDining.apk](ArDining.apk) that can be distributed through Git LFS or as a GitHub Release asset.
+- Some asset-store content is included for the demo and may not be required for a minimal build.
 
-1.  Clone this repository.
-2.  Open in **Unity 6**.
-3.  **Note**: The large Vuforia engine package (`.tgz`) is excluded from this repo for optimization; Unity will automatically resolve dependencies via `manifest.json`.
-4.  Build settings: Target **Android** (API 24+) or **iOS** (ARKit compatible).
+## Academic Context
 
----
-
-## 📝 Academic Information
-
-* **Course**: Technologies for Extended Reality
-* **Project Goal**: Demonstrate proficiency in AR tracking, mobile optimization, and interactive UX design using the latest industry standards.
-* **Developer**: Francesco Caldarelli
+This project was created for the Technologies for Extended Reality course exam to demonstrate AR tracking, mobile UI state management, and interactive menu filtering.

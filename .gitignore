@@ -1,0 +1,13 @@
+.DS_Store
+Library/
+Logs/
+Temp/
+Obj/
+Build/
+Builds/
+UserSettings/
+*.csproj
+*.user
+*.suo
+*.userprefs
+*.apk
